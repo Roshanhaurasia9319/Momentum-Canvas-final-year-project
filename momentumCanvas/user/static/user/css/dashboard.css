@@ -1,0 +1,124 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    /* background: radial-gradient(at bottom, #00ff37b6, #ffffff); */
+}
+
+/* Navbar styling */
+.navbar-brand {
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+    font-weight: bold;
+    transition: color 0.3s ease;
+
+}
+
+.navbar-nav .nav-link:hover {
+    color: white;
+    background-color: rgb(134, 248, 134);
+    border-radius: 20px;
+
+
+}
+
+
+.profile-card {
+    animation: fadeInUp 1s ease-out;
+    transition: transform 0.3s ease;
+    /* background: radial-gradient(at bottom, #00ff37b6, #ffffff); */
+
+}
+
+.profile-card:hover {
+    transform: scale(1.05);
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.profile-img {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    position: relative;
+    bottom: 90px;
+}
+
+.profile-card {
+    margin: 90px auto;
+    height: 60vh;
+    background-color: #00ff3773;
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.profile-description {
+    margin-top: 15px;
+}
+
+.stat-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.platform-logo {
+    max-width: 60px;
+}
+
+.animated-count {
+    font-size: 2rem;
+    color: #007bff;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@media only screen and (max-width: 900px) {
+    .profile-img {
+        height: 150px;
+        width: 150px;
+    }
+
+    .profile-card {
+        flex-direction: column;
+        height: fit-content;
+    }
+    .colorful-text{
+        font-size: small;
+    }
+}
