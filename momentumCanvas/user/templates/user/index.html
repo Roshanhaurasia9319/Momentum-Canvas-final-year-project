@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Multi-Step Form with Video Background</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'user/css/index.css' %}">
+</head>
+
+<body>
+    <!-- Background Video -->
+    <video autoplay muted loop id="background-video">
+        <source src="{% static 'user/videos/backgrounds.mp4' %}" type="video/mp4" height="500" width="500">
+        Your browser does not support the video tag.
+    </video>
+
+    
+
+    <div class="overlay" style="display: flex; flex-direction: column;">
+        <div class="typing-container">
+            <span class="typing-text">Track your journey with Momentum Canvas</span>
+        </div>
+       
+        <div class="form-container" style="margin-top: 10px;">
+            <form id="multiStepForm" method="POST" action="{% url 'index' %}">
+                {% csrf_token %}
+                <!-- Step 1 -->
+                <div class="form-step active">
+                    <div class="mb-3">
+                        <label for="firstName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="firstName" name="name" required>
+                    </div>
+                    <div class="buttons d-flex justify-content-end">
+                        <button type="button" class="btn btn-primary next-btn">Next</button>
+                        <button type="button" class="btn btn-secondary skip-btn ms-2">Skip</button>
+                    </div>
+                </div>
+                <!-- Step 2 -->
+                <div class="form-step">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" required>
+                    </div>
+                    <div class="buttons d-flex justify-content-end">
+                        <button type="button" class="btn btn-primary next-btn">Next</button>
+                        <button type="button" class="btn btn-secondary skip-btn ms-2">Skip</button>
+                    </div>
+                </div>
+                <!-- Step 3 -->
+                <div class="form-step">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="buttons d-flex justify-content-end">
+                        <button type="button" class="btn btn-primary next-btn">Next</button>
+                        <button type="button" class="btn btn-secondary skip-btn ms-2">Skip</button>
+                    </div>
+                </div>
+                <!-- Step 4 -->
+                <div class="form-step">
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" required>
+                    </div>
+                    <div class="buttons d-flex justify-content-end">
+                        <button type="button" class="btn btn-primary next-btn">Next</button>
+                        <button type="button" class="btn btn-secondary skip-btn ms-2">Skip</button>
+                    </div>
+                </div>
+                <!-- Step 5 -->
+                <div class="form-step">
+                    <div class="mb-3">
+                        <label for="leetcode" class="form-label">LeetCode Username</label>
+                        <input type="text" class="form-control" id="leetcode" name="leetcode">
+                    </div>
+                    <div class="buttons d-flex justify-content-end">
+                        <button type="button" class="btn btn-primary next-btn">Next</button>
+                        <button type="button" class="btn btn-secondary skip-btn ms-2">Skip</button>
+                    </div>
+                </div>
+                <!-- Step 6 -->
+                <div class="form-step">
+                    <div class="mb-3">
+                        <label for="codechef" class="form-label">CodeChef Username</label>
+                        <input type="text" class="form-control" id="codechef" name="codechef">
+                    </div>
+                    <div class="buttons d-flex justify-content-end">
+                        <button type="button" class="btn btn-primary next-btn">Next</button>
+                        <button type="button" class="btn btn-secondary skip-btn ms-2">Skip</button>
+                    </div>
+                </div>
+                <!-- Step 7 -->
+                <div class="form-step">
+                    <div class="mb-3">
+                        <label for="codeforces" class="form-label">CodeForces Username</label>
+                        <input type="text" class="form-control" id="codeforces" name="codeforces">
+                    </div>
+                    <div class="buttons d-flex justify-content-end">
+                        <button type="button" class="btn btn-primary next-btn">Next</button>
+                        <button type="button" class="btn btn-secondary skip-btn ms-2">Skip</button>
+                    </div>
+                </div>
+                <!-- Step 8 -->
+                <div class="form-step">
+                    <div class="mb-3">
+                        <label for="github" class="form-label">GitHub Handle</label>
+                        <input type="text" class="form-control" id="github" name="github">
+                    </div>
+                    <div class="buttons d-flex justify-content-end">
+                        <button type="button" class="btn btn-primary next-btn">Next</button>
+                        <button type="button" class="btn btn-secondary skip-btn ms-2">Skip</button>
+                    </div>
+                </div>
+                <!-- Step 9 -->
+                <div class="form-step">
+                    <div class="mb-3">
+                        <label for="geekforgeeks" class="form-label">GeeksforGeeks Username</label>
+                        <input type="text" class="form-control" id="geekforgeeks" name="geekforgeeks">
+                    </div>
+                    <div class="buttons d-flex justify-content-end">
+                        <button type="button" class="btn btn-primary next-btn">Next</button>
+                        <button type="button" class="btn btn-secondary skip-btn ms-2">Skip</button>
+                    </div>
+                </div>
+                <!-- Final Submit -->
+                <div class="form-step">
+                    <h4 class="text-center">All steps completed!</h4>
+                    <div class="buttons text-center">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies (Popper.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="{% static 'user/js/index.js' %}"></script>
+
+</body>
+
+</html>

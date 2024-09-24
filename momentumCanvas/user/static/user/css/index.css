@@ -1,0 +1,136 @@
+
+/* Ensure html and body take full height */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    /* Prevent scrollbars due to fixed video */
+}
+
+/* Background Video Styling */
+#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    object-fit: cover;
+}
+
+.typing-container {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2rem;
+    color: #fff;
+    border-right: 2px solid white;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 26ch;
+    animation: typing 15s steps(39) infinite, blink 0.75s step-end infinite alternate;
+    font-size: 3rem;
+    font-weight: bolder;
+}
+
+@keyframes typing {
+    0% {
+        width: 0ch;
+        color: #A200FF;
+    }
+
+    50% {
+        width: 39ch;
+        color: rgb(0, 0, 255);
+    }
+
+    100% {
+        width: 0ch;
+       color: rgb(0, 255, 0);
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
+
+/* Overlay to enhance form readability */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Optional: Add a semi-transparent overlay if needed */
+    /* background: rgba(0, 0, 0, 0.5); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Form Container Styling */
+.form-container {
+    max-width: 500px;
+    width: 100%;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.8);
+    /* Semi-transparent background */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+    color: #212529;
+    /* Bootstrap's default text color */
+}
+
+/* Form Step Styling */
+.form-step {
+    display: none;
+    animation: fadeIn 0.5s;
+}
+
+.form-step.active {
+    display: block;
+}
+
+/* Label Styling */
+label {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #A200FF;
+    /* Adjusted for better readability */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Buttons Styling */
+.buttons {
+    margin-top: 20px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 576px) {
+    .form-container {
+        padding: 20px;
+    }
+
+    label {
+        font-size: 1rem;
+    }
+}
