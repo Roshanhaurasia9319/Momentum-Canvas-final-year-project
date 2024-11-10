@@ -44,7 +44,7 @@ body {
     max-width: 500px;
     width: 100%;
     padding: 30px;
-    background: rgba(255, 255, 255, 0.822); /* Slightly less transparent for better readability */
+    background: rgba(128, 128, 128, 0.514); /* Slightly less transparent for better readability */
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     color: #212529;
@@ -95,6 +95,7 @@ label {
 .buttons {
     margin-top: 20px;
 }
+
 
 /* Responsive Adjustments */
 @media (max-width: 576px) {

@@ -6,6 +6,7 @@ class UserData(models.Model):
     username=models.CharField(max_length=50, unique=True)
     email=models.EmailField(max_length=254)
     phone=models.CharField(max_length=11)
+    password=models.CharField(max_length=11)
     leetcode = models.CharField(max_length=500, blank=True, null=True)
     codechef = models.CharField(max_length=500, blank=True, null=True)
     geekforgeeks = models.CharField(max_length=500, blank=True, null=True)

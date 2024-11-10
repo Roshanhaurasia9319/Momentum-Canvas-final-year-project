@@ -1,0 +1,26 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #13072e;
+    /* background: radial-gradient(at bottom, #00ff37b6, #ffffff); */
+}
+
+/* Navbar styling */
+.navbar-brand {
+    font-weight: bold;
+    color: white;
+}
+
+.navbar-nav .nav-link {
+    font-weight: bold;
+    transition: color 0.3s ease;
+    color: white;
+
+}
+
+.navbar-nav .nav-link:hover {
+    color: white;
+    background-color: rgb(14, 243, 14);
+    border-radius: 20px;
+
+
+}

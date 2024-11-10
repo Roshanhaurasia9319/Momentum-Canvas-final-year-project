@@ -1,0 +1,83 @@
+#about {
+    background-color: rgba(255, 255, 255, 0.1);
+    /* Light overlay for contrast */
+    padding: 40px 0;
+}
+
+#about h2 {
+    color: #ffca28;
+    /* Golden color for title */
+}
+
+#about p {
+    color: #e0e0e0;
+    font-size: 1.1rem;
+}
+
+.graphs .images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.graphs p {
+    text-align: center;
+    font-size: 2rem;
+    color: purple;
+    text-decoration: underline;
+}
+
+/* Vision Section */
+#vision {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 60px 0;
+}
+
+#vision h2 {
+    color: purple;
+    font-weight: bold;
+}
+
+#vision p {
+    color: black;
+    font-size: 1.1rem;
+}
+
+.vision-heading img {
+    width: 250px;
+    height: auto;
+    border-radius: 10px;
+
+}
+
+/* Custom button styles */
+.btn-gradient {
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 50px;
+    transition: 0.3s ease;
+}
+
+.btn-gradient:hover {
+    background: linear-gradient(45deg, #2575fc, #6a11cb);
+    transform: translateY(-2px);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
