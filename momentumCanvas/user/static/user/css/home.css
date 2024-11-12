@@ -81,3 +81,17 @@
         transform: translateY(0);
     }
 }
+
+@media (max-width: 900px) {
+    .graphs p{
+        font-size: medium;
+    }
+   .graphs .images{
+    flex-direction: column;
+   }
+   .graphs .images img{
+    width: 80vw;
+    height: 30vh;
+   }
+}
+  
