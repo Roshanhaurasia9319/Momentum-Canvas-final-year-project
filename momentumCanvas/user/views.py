@@ -1,13 +1,9 @@
 from django.shortcuts import render, HttpResponse, redirect
 from .models import UserData
-from django.http import JsonResponse
 import requests
-from django.shortcuts import render, redirect, HttpResponse
-import requests
-from django.contrib.auth.hashers import check_password
 from django.contrib import messages
 import requests
-from django.shortcuts import render, HttpResponse
+
 
 
 
@@ -110,7 +106,7 @@ def dashboard(request):
     codechefUrl = f'https://codechef-api.vercel.app/handle/{codechef_username}'
     codeforcesUrl = f'https://codeforces.com/api/user.info?handles={codeforces_username}'
     geekforgeeksUrl = f'https://geeks-for-geeks-stats-api.vercel.app/?raw=y&userName={geekforgeeks_username}'
-    githubUrl = f' https://api.github.com/users/{github_username}/repos'
+    githubUrl = f'https://api.github.com/users/{github_username}'
 
     # Initialize empty data
     leetcodeData = {}
@@ -136,11 +132,14 @@ def dashboard(request):
     # else:
     #     return redirect('error')
      
+    
     codeforces_response = requests.get(codeforcesUrl)
     if codeforces_response.status_code == 200:
-        codeforcesData = codeforces_response.json()
-    # else:
-    #     return redirect('error')
+        codeforces_json = codeforces_response.json()
+        
+        # Extract the first item from the 'result' list to get the user data as a dictionary
+        if 'result' in codeforces_json and len(codeforces_json['result']) > 0:
+            codeforcesData = codeforces_json['result'][0]
         
     geekforgeeks_response = requests.get(geekforgeeksUrl)
     if geekforgeeks_response.status_code == 200:
@@ -148,7 +147,9 @@ def dashboard(request):
     # else:
     #     return redirect('error')
         
-    print(geekforgeeksData)
+    # print(geekforgeeksData)
+    print(githubData)
+    
     # Pass both LeetCode and CodeChef data to the template
     return render(request, 'user/dashboard.html', {
         'leetcodeData': leetcodeData,
@@ -156,7 +157,7 @@ def dashboard(request):
         'geekforgeeksData': geekforgeeksData,
         'codeforcesData' : codeforcesData,
         'githubData' : githubData,
-        ' user': user_competitive_data,
+        'user': user_competitive_data.get('username'),
     })
 
 
