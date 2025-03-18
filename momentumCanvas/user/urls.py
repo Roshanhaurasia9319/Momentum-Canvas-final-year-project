@@ -6,5 +6,7 @@ urlpatterns = [
     path('signUp', views.signUp, name='signUp'),
     path('dashboard', views.dashboard, name="dashboard"),
     path('signIn', views.signIn, name='signIn'),
-     path('error', views.error, name='error'),
+    path('platformDetail/<str:platformName>/', views.platformDetail, name="platformDetail"),
+    path('error', views.error, name='error'),
+    path('analytics', views.analytics, name='analytics'),
 ]

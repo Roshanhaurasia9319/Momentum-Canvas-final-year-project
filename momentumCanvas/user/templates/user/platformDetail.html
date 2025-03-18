@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ platform.title }}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-color: #121212;
+            color: #f0f0f0;
+        }
+        .navbar {
+            background: rgb(0, 255, 255);
+            padding: 15px;
+        }
+        .nav-link {
+            color: white !important;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .nav-link:hover {
+            transform: scale(1.1);
+            text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
+        }
+        .container h2 {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            color:  rgb(0, 255, 255);
+        }
+        .card {
+            background: #1e1e1e;
+            color:white;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            box-shadow: 0px 0px 15px rgb(0, 255, 221);
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #222;
+            margin-top: 30px;
+        }
+        .animate__fadeIn {
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'platformDetail' 'leetcode' %}"><i class="fas fa-code"></i> LeetCode</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'platformDetail' 'codechef' %}"><i class="fas fa-utensils"></i> CodeChef</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'platformDetail' 'gfg' %}"><i class="fas fa-book"></i> GFG</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'platformDetail' 'codeforces' %}"><i class="fas fa-chess"></i> Codeforces</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-4 animate__fadeIn">
+        <h2>{{ platform.title }}</h2>
+        <p class="text-center">{{ platform.description }}</p>
+        {% for section in platform.sections %}
+            <div class="card">
+                <h3 class="text-primary">{{ section.headings }}</h3>
+                {% for point in section.content %}
+                    <p><i class="fas fa-check-circle text-success"></i> {{ point }}</p>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 Momentum Canvas | Designed by Roshan Lal Chaurasia</p>
+    </div>
+</body>
+</html>

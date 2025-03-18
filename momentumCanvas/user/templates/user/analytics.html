@@ -1,0 +1,177 @@
+{% extends "user/base.html" %}
+
+
+{% block css %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'user/css/dashboard.css' %}">
+<style>
+    body {
+        background-color: #121212;
+        color: #f0f0f0;
+    }
+
+    /* Sidebar - Visible by default on desktop */
+    .sidebar {
+        position: fixed;
+        left: 0; /* Always visible on desktop */
+        top: 0;
+        width: 250px;
+        height: 100vh;
+        background: linear-gradient(to right bottom,  rgb(0, 255, 255),#bed4e2);
+        /* background: linear-gradient(135deg, #ff7eb3, #ff758c); */
+        padding: 20px;
+        transition: left 0.3s ease-in-out;
+        z-index: 1000;
+    }
+
+    /* Sidebar hidden on mobile initially */
+    .sidebar.active {
+        left: -250px;
+    }
+
+    /* Sidebar links */
+    .sidebar a {
+        color: white;
+        display: block;
+        padding: 10px;
+        margin: 10px 0;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s;
+    }
+
+    .sidebar a:hover {
+        transform: scale(1.1);
+        text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
+    }
+
+    /* Content area - Adjust margin for sidebar */
+    .content {
+        margin-left: 250px;
+        padding: 20px;
+        transition: margin-left 0.3s ease-in-out;
+    }
+
+    /* Cards styling */
+    .card {
+        background: #1e1e1e;
+        color: white;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+        box-shadow: 0px 0px 15px  rgb(0, 255, 221);
+        transition: transform 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+    }
+
+    /* Footer */
+    .footer {
+        text-align: center;
+        padding: 20px;
+        background: #222;
+        margin-top: 30px;
+        
+    }
+
+    /* Fade-in animation */
+    .animate__fadeIn {
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+
+    /* Mobile view adjustments */
+    @media (max-width: 992px) {
+        .sidebar {
+            left: -250px; /* Hidden initially on mobile */
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .content {
+            margin-left: 0 !important; /* Prevent overlap */
+        }
+     
+    }
+</style>
+{% endblock css %}
+
+
+
+{% block body %}
+  
+</head>
+<body>
+
+    <!-- Menu button (Visible only on mobile) -->
+    <button class="btn btn-danger d-lg-none m-3" onclick="toggleSidebar()">☰ Menu</button>
+    
+
+
+    <!-- Main Content -->
+<!-- Main Content -->
+<div class="content animate__fadeIn">
+    <h2>Momentum Canvas Analytics</h2>
+    <div class="row">
+        <div class="col-md-4 col-sm-6">
+            <div class="card text-center">
+                <h3><i class="fas fa-chart-line text-info"></i> Performance Overview</h3>
+                <p>Analyze your overall performance metrics</p>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <div class="card text-center">
+                <h3><i class="fas fa-tasks text-success"></i> Task Completion Rate</h3>
+                <p>Monitor completed vs. pending tasks</p>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <div class="card text-center">
+                <h3><i class="fas fa-hourglass-half text-warning"></i> Time Spent</h3>
+                <p>Track time invested in projects</p>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <div class="card text-center">
+                <h3><i class="fas fa-bullseye text-danger"></i> Goal Progress</h3>
+                <p>Evaluate your progress toward goals</p>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <div class="card text-center">
+                <h3><i class="fas fa-users text-primary"></i> Team Collaboration</h3>
+                <p>View engagement and collaboration stats</p>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <div class="card text-center">
+                <h3><i class="fas fa-lightbulb text-warning"></i> Insights & Suggestions</h3>
+                <p>Get AI-driven recommendations for improvement</p>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <div class="card text-center">
+                <h3><i class="fas fa-file-alt text-secondary"></i> Report Generation</h3>
+                <p>Download detailed analytical reports</p>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <div class="card text-center">
+                <h3><i class="fas fa-chart-bar text-success"></i> Custom Analytics</h3>
+                <p>Customize data visualization as per your needs</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock body %}

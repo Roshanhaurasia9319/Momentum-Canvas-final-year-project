@@ -3,6 +3,7 @@ from .models import UserData
 import requests
 from django.contrib import messages
 import requests
+from .platformData import platformData
 
 
 
@@ -164,3 +165,23 @@ def dashboard(request):
 
 def error(request):
     return render(request, "user/error.html")
+
+
+def platformDetail(request, platformName):
+    # platformDetails = {
+    #     "leetcode" : {"title":"Leetcode", "description":"Leetcode is coding platform"},
+    #     "codechef" : {"title":"CodeChef", "description":"CodeChef is coding platform"},
+    #     "gfg" : {"title":"GeekForGeeks", "description":"GeekForGeeks is coding platform"},
+    #     "codeforces" : {"title":"CodeForces", "description":"CodeForces is coding platform"},
+    #     "github" : {"title":"Github", "description":"Github is coding platform"},
+    # }
+  
+
+    platformInfo = platformData.platformDetails.get(platformName, {"title":"Unknown", 
+                                                                   "description":"platform not found",
+                                                                   "sections":"Nothing to show",
+                                                                   })
+    return render(request, 'user/platformDetail.html', {"platform":platformInfo})
+
+def analytics(request):
+    return render(request, 'user/analytics.html')

@@ -10,68 +10,168 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
     {% load static %}
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'user/css/base.css' %}" />
-    
+    <!-- <link rel="stylesheet" href="{% static 'user/css/base.css' %}" /> -->
+
+
+
+
     {% block css %}
-    
+
     {% endblock css %}
 
 
 </head>
 
+<style>
+    body {
+        background-color: #121212;
+        color: #f0f0f0;
+    }
+
+    /* Sidebar - Visible by default on desktop */
+    .sidebar {
+        position: fixed;
+        left: 0;
+        /* Always visible on desktop */
+        top: 0;
+        width: 250px;
+        height: 100vh;
+        /* background: linear-gradient(to right bottom, rgb(0, 255, 255), #bed4e2); */
+        background:  #1E90FF;
+        padding: 20px;
+        transition: left 0.3s ease-in-out;
+        z-index: 1000;
+    }
+
+    /* Sidebar hidden on mobile initially */
+    .sidebar.active {
+        left: -250px;
+    }
+
+    /* Sidebar links */
+    .sidebar a {
+        color: white;
+        display: block;
+        padding: 10px;
+        margin: 10px 0;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s;
+    }
+
+    .sidebar a:hover {
+        transform: scale(1.1);
+        text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
+    }
+
+    /* Content area - Adjust margin for sidebar */
+    .content {
+        margin-left: 250px;
+        padding: 20px;
+        transition: margin-left 0.3s ease-in-out;
+    }
+
+    /* Cards styling */
+    .card {
+        background: #1e1e1e;
+        color: white;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+        box-shadow: 0px 0px 15px rgb(0, 255, 221);
+        transition: transform 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+    }
+
+    /* Footer */
+    .footer {
+        text-align: center;
+        padding: 20px;
+        background: #222;
+        margin-top: 30px;
+
+    }
+
+    /* Fade-in animation */
+    .animate__fadeIn {
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    /* Mobile view adjustments */
+    @media (max-width: 992px) {
+        .sidebar {
+            left: -250px;
+            /* Hidden initially on mobile */
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .content {
+            margin-left: 0 !important;
+            /* Prevent overlap */
+        }
+
+    }
+</style>
+
 <body>
     <!-- Responsive Navbar -->
-    <nav class="navbar navbar-expand-lg" style="background-color: rgba(255, 255, 255, 0)">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="{% static 'user/images/logo.png' %}" alt="" srcset="" height="100" width="120" />
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="dashboard">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#leetcode">LeetCode</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#codechef">CodeChef</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#geekforgeeks">GFG</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#codeforces">Codeforces</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#github">GitHub</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-   
-  {% block body %}
-  
-  {% endblock body %}
+    <button class="btn btn-danger d-lg-none m-3" onclick="toggleSidebar()">☰ Menu</button>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <h2 class="text-center">Dashboard</h2>
+        <a href=""><i class="fas fa-home"></i> Home</a>
+        <a href="analytics"><i class="fas fa-chart-line"></i> Analytics</a>
+        <a href="#"><i class="fas fa-tasks"></i> Tasks</a>
+        <a href="#"><i class="fas fa-users"></i> Users</a>
+        <a href="#"><i class="fas fa-cogs"></i> Settings</a>
+        <a href="{% url 'platformDetail' 'leetcode' %}"><i class="fas fa-cogs"></i> About Leetcode</a>
+        <a href="{% url 'platformDetail' 'codechef' %}"><i class="fas fa-cogs"></i> About CodeChef</a>
+        <a href="{% url 'platformDetail' 'gfg' %}"><i class="fas fa-cogs"></i> GeekForGeeks </a>
+        <a href="{% url 'platformDetail' 'codeforces' %}"><i class="fas fa-cogs"></i> CodeForces </a>
+
+    </div>
+    {% block body %}
+
+    {% endblock body %}
 
 
 
- 
+
     <!-- Footer -->
-    <footer class="bg-dark text-white py-4">
-        <div class="container text-center">
-            <p>&copy; 2024 Momentum Canvas. All rights reserved.</p>
-            <p>
-                <a href="#" class="text-white me-3">Privacy Policy</a>
-                <a href="#" class="text-white">Terms of Service</a>
-            </p>
-        </div>
-    </footer>
+    <div class="footer">
+        <p>&copy; 2025 Momentum Canvas | Designed by Roshan Lal Chaurasia</p>
+    </div>
+
+    <!-- JavaScript for Sidebar Toggle -->
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("active");
+        }
+        document.addEventListener("click", function (event) {
+            var menuButton = document.querySelector(".btn");
+            if (!sidebar.contains(event.target) && event.target !== menuButton) {
+                sidebar.classList.remove("active");
+            }
+        });
+    </script>
 
     <!-- Bootstrap JS and Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
